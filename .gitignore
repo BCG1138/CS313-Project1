@@ -1,0 +1,25 @@
+# Java
+*.class
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+.code-workspace
+
+# Vim
+*.swp
+
+# OSX
+.DS_Store
+
+# Packages
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar
+*.tar.gz
+*.rar
