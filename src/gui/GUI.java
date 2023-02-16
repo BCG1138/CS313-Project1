@@ -1,5 +1,7 @@
 package gui;
 
+//TODO: decide what gui components to use, then add/remove relevant imports
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,10 +12,10 @@ import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public static class GUI {
+public class GUI {
     public static JFrame frame = new JFrame("CS313 Project 1");
     
-    //declare gui components like buttons, menus, textboxes here
+    //TODO: declare gui components like buttons, menus, textboxes here
 
     //gui constructor
     GUI() {
@@ -21,7 +23,7 @@ public static class GUI {
       frame.setSize(800, 600);
       frame.setLocationRelativeTo(null);
 
-      //initialize gui components here
+      //TODO: initialize gui components here
 
     }
     
