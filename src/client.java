@@ -1,1 +1,6 @@
+import gui.*;
+
+class Client {
+
+}
 
