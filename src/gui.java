@@ -12,7 +12,18 @@ import javax.swing.JOptionPane;
 
 public static class GUI {
     public static JFrame frame = new JFrame("CS313 Project 1");
+    
+    //declare gui components like buttons, menus, textboxes here
 
+    //gui constructor
+    GUI() {
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setSize(800, 600);
+      frame.setLocationRelativeTo(null);
+
+      //initialize gui components here
+
+    }
     
 
     public static class MessageBox {
