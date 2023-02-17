@@ -4,7 +4,7 @@ JC = javac
 .java.class:
         $(JC) $(JFLAGS) $*.java
 
-CLASSES = gui.java client.java server.java
+CLASSES = GUI.java client.java server.java
 
 default: classes
 
