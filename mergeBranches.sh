@@ -1,5 +1,6 @@
 git pull
 git checkout main
+git pull
 
 git merge Client
 git checkout main
@@ -10,11 +11,17 @@ git checkout main
 
 echo "all branches merged"
 
+git branch --delete Client
+git branch --delete Gui
+git branch --delete Server
+
+echo "all brancher deleted"
+
 git branch Client
 git checkout main
 git branch Gui
 git checkout main
 git branch Server
 git checkout main
-
+git pull
 echo "all branches reinstated"
