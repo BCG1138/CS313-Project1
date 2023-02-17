@@ -23,5 +23,6 @@ git branch Gui
 git checkout main
 git branch Server
 git checkout main
-git pull
+git push -u origin main
 echo "all branches reinstated"
+
