@@ -1,14 +1,13 @@
 JFLAGS = -g
 JC = javac
-.SUFFIXES: .java .class
-.java.class:
-        $(JC) $(JFLAGS) $*.java
+JVM = java
 
-CLASSES = GUI.java client.java server.java
-
-default: classes
-
-classes: $(CLASSES:.java=.class)
+GUI:
+        javac -d GUI.java
+server:
+        javac server.java
+client: GUI.class
+        javac client.java
 
 clean:
-        $(RM) *.class
+        rm -f *.o
