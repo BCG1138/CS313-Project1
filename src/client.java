@@ -1,4 +1,4 @@
-import gui.GUI;
+import gui.gui.GUI.*;
 import java.io.*;  
 import java.net.*;  
 

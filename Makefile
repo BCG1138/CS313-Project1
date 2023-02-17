@@ -1,13 +1,15 @@
 JFLAGS = -g
 JC = javac
-JVM = java
+JPACKAGEFLAGS = -d ./gui
 
-GUI:
-        javac -d GUI.java
-server:
-        javac server.java
-client: GUI.class
-        javac client.java
+default: GUI.class server.class client.class
+
+GUI.class: src/gui/GUI.java
+	$(JC) $(JFLAGS) $(JPACKAGEFLAGS) src/gui/GUI.java
+server.class: src/server.java
+	$(JC) $(JFLAGS) src/server.java
+client.class: src/client.java
+	$(JC) $(JFLAGS) src/client.java
 
 clean:
-        rm -f *.o
+	rm -rf *.class
