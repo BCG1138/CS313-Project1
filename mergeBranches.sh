@@ -3,12 +3,13 @@ branches=("Server" "Client" "Gui")
 git pull
 git checkout main
 
-for i in branches; do
+for i in $(branches[@]); do
   git checkout main
-  git merge $(branches[i])
+  git merge ${i}
 done
-
-for i in branches; do
+echo "all branches merged"
+for i in $(branches[@]); do
   git checkout main
-  git branch $(branches[i])
+  git branch ${i}
 done
+echo "all branches reinstated"
