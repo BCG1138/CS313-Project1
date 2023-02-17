@@ -1,7 +1,10 @@
 import java.io.*;  
 import java.net.*;
+import java.util.ArrayList;
 
 class server extends Thread{
+	ArrayList<String> user_list = new ArrayList<String>();
+
     public void run() {
 
     }
@@ -27,4 +30,35 @@ class server extends Thread{
             //TODO: add error handling
         }
     }
+
+	/**
+	* Private method for the server to update the active user list.
+	*
+	* @param action add/remove user, corresponding to values of 0 and 1
+	* 				respectively
+	*
+	* @param username User upon which action should take place
+	*
+	*/
+	private static void update_list(int action, String username) {
+		//Possibly switch over to if/else, using switch for safety with default
+
+		switch(action):
+			case 0:
+				user_list.add(username);
+				break;
+
+			case 1:
+				for (int i = 0; i < user_list.size(); i++) {
+					if (user_list.get(i).equals(username)) {
+						user_list.remove(i);
+						break;
+					}
+				}
+				break;
+
+			default:
+				System.out.println("Invalid operation value");
+				break;
+	}
 }
