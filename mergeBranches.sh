@@ -1,4 +1,4 @@
-branches = ("Server" "Client" "Gui")
+branches=("Server" "Client" "Gui")
 
 git pull
 git checkout main
