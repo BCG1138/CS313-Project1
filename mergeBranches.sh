@@ -1,15 +1,20 @@
-branches=("Server" "Client" "Gui")
-
 git pull
 git checkout main
 
-for i in $(branches[@]); do
-  git checkout main
-  git merge ${i}
-done
+git merge Client
+git checkout main
+git merge Gui
+git checkout main
+git merge Server
+git checkout main
+
 echo "all branches merged"
-for i in $(branches[@]); do
-  git checkout main
-  git branch ${i}
-done
+
+git branch Client
+git checkout main
+git branch Gui
+git checkout main
+git branch Server
+git checkout main
+
 echo "all branches reinstated"
