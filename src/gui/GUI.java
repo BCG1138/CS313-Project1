@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class GUI {
+class GUI {
     public static JFrame frame = new JFrame("CS313 Project 1");
     
     //TODO: declare gui components like buttons, menus, textboxes here
@@ -27,29 +27,28 @@ public class GUI {
 
     }
     
+}
 
-    public static class MessageBox {
-        JFrame tempFrame;
-  
-        MessageBox(String message) {
-          tempFrame = new JFrame();
-          JOptionPane.showMessageDialog(tempFrame, message);
-        }
-    }
-  
-    public static class InputDialogBox {
-        static JFrame f;
-        static String input;
-  
-        InputDialogBox(String message) {
-          f = new JFrame();
-          input = JOptionPane.showInputDialog(f, message);
-        }
-  
-        public static String getInput() {
-          return input;
-        }
-      
+class MessageBox {
+  JFrame tempFrame;
+
+  MessageBox(String message) {
+    tempFrame = new JFrame();
+    JOptionPane.showMessageDialog(tempFrame, message);
+  }
+}
+
+class InputDialogBox {
+  static JFrame f;
+  static String input;
+
+  InputDialogBox(String message) {
+    f = new JFrame();
+    input = JOptionPane.showInputDialog(f, message);
+  }
+
+  public static String getInput() {
+    return input;
   }
 
 }
