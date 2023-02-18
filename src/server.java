@@ -2,8 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-class server extends Thread{
-	private ArrayList<String> user_list = new ArrayList<String>();
+public class server extends Thread{
+	private static ArrayList<String> user_list = new ArrayList<String>();
 
     public void run() {
 
@@ -44,7 +44,7 @@ class server extends Thread{
 	private static void update_list(int action, String username) {
 		//Possibly switch over to if/else, using switch for safety with default
 
-		switch(action):
+		switch(action) {
 			case 0:
 				user_list.add(username);
 				System.out.println("'" + username + "' connected");
@@ -63,6 +63,7 @@ class server extends Thread{
 			default:
 				System.out.println("Invalid operation value");
 				break;
+			}
 	}
 
 	/**
@@ -76,7 +77,7 @@ class server extends Thread{
 		boolean valid = true;
 
 		for (int i = 0; i < user_list.size(); i++) {
-			if (user_.list.get(i).equals(username)) {
+			if (user_list.get(i).equals(username)) {
 				valid = false;
 				break;
 			}
