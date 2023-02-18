@@ -2,31 +2,26 @@ package gui;
 
 //TODO: decide what gui components to use, then add/remove relevant imports
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
-class GUI {
+public class GUI 
+{
     public static JFrame frame = new JFrame("CS313 Project 1");
     
     //TODO: declare gui components like buttons, menus, textboxes here
 
     //gui constructor
-    GUI() {
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setSize(800, 600);
-      frame.setLocationRelativeTo(null);
+    public GUI() 
+	{
+	 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      	frame.setSize(250, 200);
+	  	frame.setLayout(null);
+	  	frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 
-      //TODO: initialize gui components here
+      	//TODO: initialize gui components here
 
     }
-    
 }
 
 class MessageBox {
