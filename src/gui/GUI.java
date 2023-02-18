@@ -8,9 +8,7 @@ import java.awt.event.*;
 public class GUI 
 {
     public static JFrame frame = new JFrame("CS313 Project 1");
-    
-    //TODO: declare gui components like buttons, menus, textboxes here
-
+	public static JFrame cwf = new JFrame("CS313 Project 1");
     //gui constructor
     public GUI() 
 	{
@@ -47,6 +45,10 @@ public class GUI
 	  	frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		//////////////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////////////////////////
+
+
     }
 }
 
