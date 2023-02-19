@@ -11,6 +11,7 @@ public class GUI
     //gui constructor
     public GUI() 
 	{
+		/////////////////////////login window///////////////////////////////
 		//text box
 		JTextField un = new JTextField();
 		un.setBounds(50, 50, 150, 30);
@@ -41,7 +42,7 @@ public class GUI
 	  	frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 
-		//////////////////////////////////////////////////////////////////////
+		///////////////////////////chat window///////////////////////////////////
 		//text area
 		JTextArea chat = new JTextArea();
 		chat.setBounds(50, 50, 700, 400);
@@ -85,8 +86,8 @@ public class GUI
 		cwf.setVisible(false);
 		cwf.setLocationRelativeTo(null);
 
-		////////////////////////////////////////////////////////////////////
-		//texxt area
+		//////////////////////////user window///////////////////////////////
+		//text area
 		JTextArea ua = new JTextArea();
 		ua.setBounds(30, 50, 240, 400);
 		ua.setEditable(false);
