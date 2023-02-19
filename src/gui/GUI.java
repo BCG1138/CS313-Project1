@@ -6,6 +6,7 @@ public class GUI
 {
     public static JFrame frame = new JFrame("CS313 Project 1");
 	public static JFrame cwf = new JFrame("CS313 Project 1");
+	public static JFrame uf = new JFrame("CS313 Project 1");
 
     //gui constructor
     public GUI() 
@@ -62,9 +63,9 @@ public class GUI
 			public void itemStateChanged(ItemEvent itemEvent) {
 				int state = itemEvent.getStateChange();
 				if (state == ItemEvent.SELECTED) {
-					chmg.setText("Selected");
+					uf.setVisible(true);
 				} else {
-					chmg.setText("Deselected");
+					uf.setVisible(false);
 				}
 			}
 		};
@@ -83,6 +84,28 @@ public class GUI
 		cwf.setLayout(null);
 		cwf.setVisible(false);
 		cwf.setLocationRelativeTo(null);
+
+		////////////////////////////////////////////////////////////////////
+		//texxt area
+		JTextArea ua = new JTextArea();
+		ua.setBounds(30, 50, 240, 400);
+		ua.setEditable(false);
+
+		//label
+		JLabel cl = new JLabel("Active users");
+		cl.setBounds(30, 20, 100, 30);
+
+		//frame adds
+		uf.add(ua);
+		uf.add(cl);
+
+		//frame code
+		uf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      	uf.setSize(300, 500);
+	  	uf.setLayout(null);
+	  	uf.setVisible(false);
+		uf.setLocation(10, 60);
+
     }
 }
 
