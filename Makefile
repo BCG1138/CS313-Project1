@@ -6,11 +6,11 @@ gui: GUI.class
 client: message.class GUI.class client.class
 server: message.class server.class
 
-message.class: src/packages
-	$(JC) $(JFLAGS) src/packages/messageUtils/message.java
-	$(JC) $(JFLAGS) src/packages/messageUtils/serialization.java
+message.class: src/messageUtils/messages.java
+	$(JC) $(JFLAGS) src/messageUtils/message.java
+	$(JC) $(JFLAGS) src/messageUtils/serialization.java
 GUI.class: src/packages/gui/GUI.java
-	$(JC) $(JFLAGS) src/packages/gui/GUI.java
+	$(JC) $(JFLAGS) src/gui/GUI.java
 server.class: src/server.java
 	$(JC) $(JFLAGS) src/server.java
 client.class: bin/gui src/client.java

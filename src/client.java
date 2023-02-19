@@ -1,17 +1,23 @@
-import packages.*;
+import gui.*;
+//import messageUtils.*;
 import java.io.*;  
 import java.net.*;  
 
-class Client extends Thread{
+public class client extends Thread{
+    String username = "";
+
     public void run() {
         
     }
 
     public static void main(String[] args) {
+
         try {
             //TODO: replace host and port number with appropriate 
             //  keywords id's to allow connections other than localhost
             Socket connection_socket = new Socket("localhost", 6666);
+            ObjectInputStream messageIn = new ObjectInputStream(connection_socket.getInputStream());
+            ObjectOutputStream messageOut = new ObjectOutputStream(connection_socket.getOutputStream());
 
             //TODO: get username through use of InputDialogBox and
             //  MessageBox (see gui.java)

@@ -1,7 +1,8 @@
-import java.io.*;  
-import packages.messageUtils.*;
+import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
+
+import messageUtils.*;
 
 public class server extends Thread{
 	private static ArrayList<String> user_list = new ArrayList<String>();
