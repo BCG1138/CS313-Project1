@@ -1,4 +1,4 @@
-package packages.gui;
+package gui;
 //TODO: decide what gui components to use, then add/remove relevant imports
 import javax.swing.*;
 import java.awt.event.*;
@@ -10,36 +10,21 @@ public class GUI
     //gui constructor
     public GUI() 
 	{
-		////////////////////text box////////////////////////////
 		//text box
 		JTextField un = new JTextField();
 		un.setBounds(50, 50, 150, 30);
-		///////////////////////////////////////////////////////
 
-		////////////////////button////////////////////////////
-		JButton b = new JButton("Log in");
-		b.setBounds(75, 100, 100, 30);
-		//b.addActionListener(new ActionListener() {
-			//public void actionPerformed(ActionEvent e) {
-
-			//}
-		//});
-		////////////////////////////////////////////////////////
-
-		//////////////////label////////////////////////////////
 		//label
 		JLabel l = new JLabel("Enter Username");
 		l.setBounds(75, 20, 100, 30);
-		///////////////////////////////////////////////////////
 
-		/////////////////////frame adds//////////////////////////
-		frame.add(un);
 		//button
 		JButton b = new JButton("Log in");
 		b.setBounds(75, 100, 100, 30);
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				un.setText("werk");
+				frame.setVisible(false);
+				cwf.setVisible(true);
 			}
 		});
 
@@ -47,25 +32,56 @@ public class GUI
 		frame.add(b);
 		frame.add(un);
 		frame.add(l);
-		////////////////////////////////////////////////////////
 
-		//////////////////////////frame code//////////////////////
 		//frame code
 	 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       	frame.setSize(250, 200);
 	  	frame.setLayout(null);
 	  	frame.setVisible(true);
-	  	frame.setVisible(false);
 		frame.setLocationRelativeTo(null);
-		//////////////////////////////////////////////////////////
 
 		//////////////////////////////////////////////////////////////////////
+		//text area
+		JTextArea chat = new JTextArea();
+		chat.setBounds(50, 50, 700, 400);
+		chat.setEditable(false);
+		chat.setLineWrap(true);
 
+		//textfield
+		JTextField chmg = new JTextField();
+		chmg.setBounds(50, 475, 625, 30);
 
+		//button
+		JButton cb = new JButton("Post");
+		cb.setBounds(675, 475, 75, 30);
+
+		//toggle button
+		JToggleButton tb = new JToggleButton("Users");
+		tb.setBounds(675, 505, 75, 30);
+		ItemListener il = new ItemListener() {
+			public void itemStateChanged(ItemEvent itemEvent) {
+				int state = itemEvent.getStateChange();
+				if (state == ItemEvent.SELECTED) {
+					chmg.setText("Selected");
+				} else {
+					chmg.setText("Deselected");
+				}
+			}
+		};
+
+		tb.addItemListener(il);
+
+		//frame adds
+		cwf.add(chat);
+		cwf.add(chmg);
+		cwf.add(cb);
+		cwf.add(tb);
+
+		//frame code
 		cwf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cwf.setSize(800,600);
 		cwf.setLayout(null);
-		cwf.setVisible(true);
+		cwf.setVisible(false);
 		cwf.setLocationRelativeTo(null);
     }
 }
