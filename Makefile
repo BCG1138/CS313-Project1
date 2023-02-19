@@ -9,7 +9,8 @@ server: message.class server.class
 message.class: src/messageUtils/messages.java
 	$(JC) $(JFLAGS) src/messageUtils/message.java
 	$(JC) $(JFLAGS) src/messageUtils/serialization.java
-GUI.class: src/packages/gui/GUI.java
+	$(JC) $(JFLAGS) src/messageUtils/request.java
+GUI.class: src/gui/GUI.java
 	$(JC) $(JFLAGS) src/gui/GUI.java
 server.class: src/server.java
 	$(JC) $(JFLAGS) src/server.java
