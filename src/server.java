@@ -4,32 +4,60 @@ import java.util.ArrayList;
 
 import messageUtils.*;
 
-public class server extends Thread{
+public class server extends Thread
+{
 	private static ArrayList<String> user_list = new ArrayList<String>();
 
-    public void run() {
+    public void run() 
+	{
 
     }
 
-    //TODO: create data structure (probably an arraylist) to store usernames
+    public static void main(String[] args) 
+	{
+		String user;
+		String input, output;
+		int port = Integer.parseInt(args[0]);
 
-    public static void main(String[] args) {
         try {
             //TODO: replace host and port number with appropriate 
             //  keywords id's to allow connections other than localhost
-            ServerSocket s_socket = new ServerSocket(6666);
+            ServerSocket s_socket = new ServerSocket(port);
             Socket connection_socket = s_socket.accept();
+
+			//very placeholder, will likely move individual thread stuff into
+			//a separate class file, just trying to get things up and running
+			PrintWriter out = new
+			Printwriter(connection_socket.getOutputStream(), true);
+
+			BufferedReader in = new BufferedReader(new
+			InputStreamReader(connection_socket.getInputStream()));
+				
+			while ((input = in.readLine()) != null) {
+				output = input;
+				System.out.println(output);
+				out.println(output);
+			}
 
             //TODO: create thread that listens for incoming requests,
             //  see if username is taken, then add/deny user
+			if (check_list(user)) {
+			
+			} else {
+
+			}
 
             //TODO: create listening thread for messages from users,
             //  and distribute according to scope (public/whisper)
+			
+
             //TODO: handle disconnect request of users
+			update_list(1, user);
 
             s_socket.close();
         } catch (Exception e) {
-            //TODO: add error handling
+			System.err.println("Error assigning socket");
+			System.exit(0);
         }
     }
 
@@ -43,7 +71,8 @@ public class server extends Thread{
 	 * @param username User upon which action should take place
 	 *
 	 */
-	private static void update_list(int action, String username) {
+	private static void update_list(int action, String username) 
+	{
 		//Possibly switch over to if/else, using switch for safety with default
 
 		switch(action) {
@@ -75,7 +104,8 @@ public class server extends Thread{
 	 * @return boolean determining if username is available (true if so)
 	 *
 	 */
-	private static boolean check_list(String username) {
+	private static boolean check_list(String username) 
+	{
 		boolean valid = true;
 
 		for (int i = 0; i < user_list.size(); i++) {
@@ -94,7 +124,8 @@ public class server extends Thread{
 	 * @return Arraylist containing connected users
 	 *
 	 */
-	public static ArrayList<String> request_list() {
+	public static ArrayList<String> request_list() 
+	{
 		// Very placeholder, determine how requests will be handled via sockets.
 		return	user_list;
 	}
