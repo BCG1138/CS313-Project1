@@ -1,4 +1,4 @@
-package gui;
+package packages.gui;
 
 //TODO: decide what gui components to use, then add/remove relevant imports
 
