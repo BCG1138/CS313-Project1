@@ -38,7 +38,7 @@ public class message implements Serializable {
         return messageSender;
     }
 
-    public String getReceievr() {
+    public String getReceiever() {
         return messageReceiver;
     }
 
@@ -54,7 +54,7 @@ public class message implements Serializable {
         messageSender = sender;
     }
 
-    public void setReceievr(String receiver) {
+    public void setReceiever(String receiver) {
         messageReceiver = receiver;
     }
 

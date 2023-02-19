@@ -1,5 +1,5 @@
 package gui;
-//TODO: decide what gui components to use, then add/remove relevant imports
+
 import javax.swing.*;
 import java.awt.event.*;
 public class GUI 
