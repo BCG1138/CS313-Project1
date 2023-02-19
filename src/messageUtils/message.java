@@ -10,7 +10,7 @@ public class message implements Serializable {
 
     @Override
     public String toString() {
-        return messageSender + ": " + messageContent;
+        return messageSender + ": " + messageContent + "\n";
     }
 
     public message(){
