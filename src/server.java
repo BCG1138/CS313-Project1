@@ -16,7 +16,7 @@ public class server extends Thread
     public static void main(String[] args) 
 	{
 		String user;
-		String in;
+		String input, output;
 		int port = Integer.parseInt(args[0]);
 
         try {
@@ -32,6 +32,12 @@ public class server extends Thread
 
 			BufferedReader in = new BufferedReader(new
 			InputStreamReader(connection_socket.getInputStream()));
+				
+			while ((input = in.readLine()) != null) {
+				output = input;
+				System.out.println(output);
+				out.println(output);
+			}
 
             //TODO: create thread that listens for incoming requests,
             //  see if username is taken, then add/deny user
