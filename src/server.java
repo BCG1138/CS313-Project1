@@ -15,54 +15,25 @@ public class server extends Thread
 
     public static void main(String[] args) 
 	{
-		String user;
-		String input, output;
+		boolean listen = true;
 		int port = Integer.parseInt(args[0]);
 
-        try {
-            //TODO: replace host and port number with appropriate 
-            //  keywords id's to allow connections other than localhost
-            ServerSocket s_socket = new ServerSocket(port);
-            Socket connection_socket = s_socket.accept();
-
-			//very placeholder, will likely move individual thread stuff into
-			//a separate class file, just trying to get things up and running
-			PrintWriter out = new
-			Printwriter(connection_socket.getOutputStream(), true);
-
-			BufferedReader in = new BufferedReader(new
-			InputStreamReader(connection_socket.getInputStream()));
-				
-			while ((input = in.readLine()) != null) {
-				output = input;
-				System.out.println(output);
-				out.println(output);
-			}
-
-            //TODO: create thread that listens for incoming requests,
-            //  see if username is taken, then add/deny user
-			if (check_list(user)) {
-			
-			} else {
-
+        try (ServerSocket s_socket = new ServerSocket(port)) {
+			while (listen) {
+				new serverThread(s_socket.accept()).start();
 			}
 
             //TODO: create listening thread for messages from users,
             //  and distribute according to scope (public/whisper)
 			
-
-            //TODO: handle disconnect request of users
-			update_list(1, user);
-
-            s_socket.close();
         } catch (Exception e) {
-			System.err.println("Error assigning socket");
+			System.err.println("Error listening on port " + port);
 			System.exit(0);
         }
     }
 
 	/**
-	 * Private method for the server to update the active user list, also
+	 * Public method for the server to update the active user list, also
 	 * prints corresponding actions to terminal.
 	 *
 	 * @param action add/remove user, corresponding to values of 0 and 1
@@ -71,10 +42,8 @@ public class server extends Thread
 	 * @param username User upon which action should take place
 	 *
 	 */
-	private static void update_list(int action, String username) 
+	public static void update_list(int action, String username) 
 	{
-		//Possibly switch over to if/else, using switch for safety with default
-
 		switch(action) {
 			case 0:
 				user_list.add(username);
@@ -98,13 +67,13 @@ public class server extends Thread
 	}
 
 	/**
-	 * Private method for server to determine uniqueness of client username
+	 * Public method for server to determine uniqueness of client username
 	 *
 	 * @param username unique id with which user attempts to connect
 	 * @return boolean determining if username is available (true if so)
 	 *
 	 */
-	private static boolean check_list(String username) 
+	public static boolean check_list(String username) 
 	{
 		boolean valid = true;
 
