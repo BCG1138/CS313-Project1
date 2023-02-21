@@ -10,7 +10,6 @@ public class chatWindow {
     public JToggleButton toggleUserButton = new JToggleButton("Users");
 
     public chatWindow() {
-        ///////////////////////////chat window///////////////////////////////////
 		//text area
 		chatDisplay.setBounds(50, 50, 700, 400);
 		chatDisplay.setEditable(false);

@@ -9,7 +9,6 @@ public class loginWindow {
 	public JButton loginButton = new JButton("Log in");
     
 	public loginWindow() {
-    /////////////////////////login window///////////////////////////////
 		//text box	
 		usernameField.setBounds(50, 50, 150, 30);
 

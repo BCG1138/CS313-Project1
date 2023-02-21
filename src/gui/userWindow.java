@@ -3,17 +3,16 @@ package gui;
 import javax.swing.*;
 
 public class userWindow {
-    public JFrame userListFrame = new JFrame("CS313 Project 1");
+    JFrame userListFrame = new JFrame("CS313 Project 1");
+	JTextArea userListDisplay = new JTextArea();
+	JLabel userListLabel = new JLabel("Active users");
 
     public userWindow(){
-        //////////////////////////user window///////////////////////////////
 		//text area
-		JTextArea userListDisplay = new JTextArea();
 		userListDisplay.setBounds(30, 50, 240, 400);
 		userListDisplay.setEditable(false);
 
 		//label
-		JLabel userListLabel = new JLabel("Active users");
 		userListLabel.setBounds(30, 20, 100, 30);
 
 		//frame adds
@@ -26,5 +25,21 @@ public class userWindow {
 	  	userListFrame.setLayout(null);
 		userListFrame.setLocation(10, 60);
     }
+
+	public void show() {
+		userListFrame.setVisible(true);
+	}
+
+	public void hide() {
+		userListFrame.setVisible(false);
+	}
+
+	public void toggleVisible() {
+		userListFrame.setVisible(!userListFrame.isVisible());
+	}
+
+	public void updateList (String users) {
+		userListDisplay.setText(users);
+	}
     
 }

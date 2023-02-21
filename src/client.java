@@ -54,20 +54,20 @@ public class client extends Thread {
 		});
     }
 
-    void setupChat() {
+    private void setupChat() {
         chat = new chatWindow();
         setupActiveUsers();
-        activeUsers.userListFrame.setVisible(false);
+        activeUsers.hide();
         chat.toggleUserButton.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent itemEvent) {
-				int state = itemEvent.getStateChange();
+				/* int state = itemEvent.getStateChange();
 				if (state == ItemEvent.SELECTED) {
-					activeUsers.userListFrame.setVisible(true);
+					activeUsers.show();
                     updateActiveUsers();
 				} else {
-					activeUsers.userListFrame.setVisible(false);
-				}
-
+					activeUsers.hide();
+				} */
+                activeUsers.toggleVisible();
 			}
         });
 
@@ -85,18 +85,18 @@ public class client extends Thread {
     
     }
 
-    void setupActiveUsers() {
+    private void setupActiveUsers() {
         activeUsers = new userWindow();
         user_list = new ArrayList<String>();
         user_list.add("bencg");
         updateActiveUsers();
     }
 
-    void updateActiveUsers() {
+    private void updateActiveUsers() {
         //TODO: request userlist from server and update activeUsers accordingly
     }
 
-    boolean checkUsername(String username) {
+    private boolean checkUsername(String username) {
         boolean lengthMin = true;
         //TODO: add more restrictions to username here, like character limit, must start with letter and forbidden characters
         if (username.length() < 4) {
@@ -112,18 +112,17 @@ public class client extends Thread {
         return lengthMin;
     }
     
-    void showMessage(String message) {
-        messageBox display;
-        display = new messageBox(message);
+    private void showMessage(String message) {
+        messageBox display = new messageBox(message);
     }
 
-    boolean requestConnection(String username) {
+    private boolean requestConnection(String username) {
         //TODO: send connection request to server, return result
         return true;
     }
 
     //check if whisper prompt is used, target exists and returns appropriate target and message
-    String[] processMessage(String content) {
+    private String[] processMessage(String content) {
         String target = "";
         String message;
         int i;
@@ -147,7 +146,14 @@ public class client extends Thread {
         return result;
     }
 
-    boolean sendMessage(String username, String target, String message) {
+    /**
+     * Sends message to server through objectoutputstream using a message object
+     * @param username Username of user sending the message
+     * @param target Target of message, another user, ("n/a" for public).
+     * @param message Content of message
+     * @return 1 for message successfully sent, 0 for failure to send
+     */
+    private boolean sendMessage(String username, String target, String message) {
         message mess = new message();
         
         mess.setSender(username);
@@ -155,7 +161,7 @@ public class client extends Thread {
         mess.setWhispered(!target.equals("n/a"));
         mess.setReceiever(target);
 
-        //TODO: serialize mess and send through objectoutputstream messageOut
+        //TODO: serialize mess and send through objectoutputstream messageOut, return success/failure
         
         return true;
     }
