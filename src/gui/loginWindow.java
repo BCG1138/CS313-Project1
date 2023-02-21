@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-//import java.awt.event.*;
 
 public class loginWindow {
     public JFrame loginFrame = new JFrame("CS313 Project 1");
@@ -11,8 +10,7 @@ public class loginWindow {
     
 	public loginWindow() {
     /////////////////////////login window///////////////////////////////
-		//text box
-		
+		//text box	
 		usernameField.setBounds(50, 50, 150, 30);
 
 		//label
@@ -20,14 +18,6 @@ public class loginWindow {
 
 		//button
 		loginButton.setBounds(75, 100, 100, 30);
-		/* loginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				loginFrame.setVisible(false);
-				loginPressed = true;
-				username = usernameField.getText();
-				//send username to client
-			}
-		}); */
 
 		//frame adds
 		loginFrame.add(loginButton);

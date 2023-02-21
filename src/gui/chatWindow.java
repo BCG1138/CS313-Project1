@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-//import java.awt.event.*;
 
 public class chatWindow {
     public JFrame chatFrame = new JFrame("CS313 Project 1");
@@ -25,19 +24,6 @@ public class chatWindow {
 
 		//toggle button
 		toggleUserButton.setBounds(675, 505, 75, 30);
-		/* ItemListener il = new ItemListener() {
-			public void itemStateChanged(ItemEvent itemEvent) {
-				int state = itemEvent.getStateChange();
-				if (state == ItemEvent.SELECTED) {
-					uf.setVisible(true);
-				} else {
-					uf.setVisible(false);
-				}
-
-			}
-		}; */
-
-		//toggleUserButton.addItemListener(il);
 
 		//frame adds
 		chatFrame.add(chatDisplay);

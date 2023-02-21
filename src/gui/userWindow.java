@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-//import java.awt.event.*;
 
 public class userWindow {
     public JFrame userListFrame = new JFrame("CS313 Project 1");
@@ -25,7 +24,7 @@ public class userWindow {
 		userListFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       	userListFrame.setSize(300, 500);
 	  	userListFrame.setLayout(null);
-	  	userListFrame.setVisible(true);
+	  	//userListFrame.setVisible(true);
 		userListFrame.setLocation(10, 60);
     }
     
