@@ -25,7 +25,6 @@ public class userWindow {
 		userListFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       	userListFrame.setSize(300, 500);
 	  	userListFrame.setLayout(null);
-	  	userListFrame.setVisible(true);
 		userListFrame.setLocation(10, 60);
     }
     

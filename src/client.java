@@ -21,30 +21,10 @@ public class client extends Thread {
         
     } */
 
-    public static void main(String[] args) {
-
-        /* try {
-            //TODO: replace host and port number with appropriate 
-            //  keywords id's to allow connections other than localhost
-            connection_socket = new Socket("localhost", 6666);
-            messageIn = new ObjectInputStream(connection_socket.getInputStream());
-            messageOut = new ObjectOutputStream(connection_socket.getOutputStream());
-
-            //TODO: create thread to listen for incoming messages +
-            //  separata thread for sending messages
-
-            //TODO: handle disconnecting by sending appropriate request to server
-            //  and wait for confirmation before closing connection and exiting
-            
-            connection_socket.close();
-        } catch (Exception e) {
-            //TODO: add error handling
-        } */
+    public static void main(String[] args) {   
 
         client Client = new client();
         Client.setupLogin();
-        
-        //System.exit(0);
     }
 
     private void setupLogin() {
@@ -107,8 +87,8 @@ public class client extends Thread {
 
     void setupActiveUsers() {
         activeUsers = new userWindow();
-        /* user_list = new ArrayList<String>();
-        user_list.add("sanjay"); */
+        user_list = new ArrayList<String>();
+        user_list.add("bencg");
         updateActiveUsers();
     }
 
