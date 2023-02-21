@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-//import java.awt.event.*;
 
 public class userWindow {
     public JFrame userListFrame = new JFrame("CS313 Project 1");
