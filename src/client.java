@@ -13,20 +13,29 @@ public class client extends Thread {
     private userWindow activeUsers;
     private String username = "";
 
-    Socket connection_socket;
-    ObjectInputStream messageIn;
-    ObjectOutputStream messageOut;
+    static Socket connection_socket;
 
     /* public void run() {
         
     } */
 
     public static void main(String[] args) {   
-
+        /* int portNumber;
+        portNumber = Integer.parseInt(args[0]);
+        try {
+            connection_socket = new Socket(InetAddress.getLocalHost(), portNumber);
+        } catch (Exception e) {
+            //TODO: error handling
+            return;
+        } */
+        
         client Client = new client();
         Client.setupLogin();
     }
 
+    /**
+     * creates login window, and adds action events to buttons
+     */
     private void setupLogin() {
         login = new loginWindow();
         login.loginButton.addActionListener(new ActionListener() {
@@ -54,19 +63,15 @@ public class client extends Thread {
 		});
     }
 
+    /**
+     * creates chat window, and adds action events to buttons
+     */
     private void setupChat() {
         chat = new chatWindow();
         setupActiveUsers();
         activeUsers.hide();
-        chat.toggleUserButton.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent itemEvent) {
-				/* int state = itemEvent.getStateChange();
-				if (state == ItemEvent.SELECTED) {
-					activeUsers.show();
-                    updateActiveUsers();
-				} else {
-					activeUsers.hide();
-				} */
+        chat.toggleUserButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 activeUsers.toggleVisible();
 			}
         });
@@ -85,6 +90,9 @@ public class client extends Thread {
     
     }
 
+    /**
+     * creates active users window, and updates it's list
+     */
     private void setupActiveUsers() {
         activeUsers = new userWindow();
         user_list = new ArrayList<String>();
@@ -92,10 +100,19 @@ public class client extends Thread {
         updateActiveUsers();
     }
 
+    /**
+     * requests a new list
+     */
     private void updateActiveUsers() {
         //TODO: request userlist from server and update activeUsers accordingly
     }
 
+    /**
+     * checks if username passes minimum requirements
+     * @param username name of user
+     * @return true if username passed, otherwise displays message showing which checks
+     *      failed and returns false
+     */
     private boolean checkUsername(String username) {
         boolean lengthMin = true;
         //TODO: add more restrictions to username here, like character limit, must start with letter and forbidden characters
@@ -116,12 +133,44 @@ public class client extends Thread {
         messageBox display = new messageBox(message);
     }
 
+    /**
+     * send connection request to server, return result
+     * @param username username of client
+     * @return true if connection request was accepted, false otherwise
+     */
     private boolean requestConnection(String username) {
-        //TODO: send connection request to server, return result
+        try {
+            ObjectOutputStream requestStreamOut = new ObjectOutputStream(connection_socket.getOutputStream());
+            ObjectInputStream requestStreamIn = new ObjectInputStream(connection_socket.getInputStream());
+            request req = new request(1, username);
+            request answer;
+            requestStreamOut.writeObject(req);
+            // wait for request to be accepted or denied
+            while ((answer = (request) requestStreamIn.readObject()) != null) {
+                if (answer.getUsername().equals(username)) {
+                    requestStreamOut.close();
+                    requestStreamIn.close();
+                    
+                    if ( answer.getType() == 2) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            requestStreamOut.close();
+            requestStreamIn.close();
+        } catch (Exception e) {
+            return true;
+        }
         return true;
     }
 
-    //check if whisper prompt is used, target exists and returns appropriate target and message
+    /**
+     * check if whisper prompt is used, target exists and returns appropriate target and message
+     * @param content everything typed by the user in the message text field
+     * @return the target of the message (where applicable) and the actual content of the message
+     */
     private String[] processMessage(String content) {
         String target = "";
         String message;
@@ -162,6 +211,7 @@ public class client extends Thread {
         mess.setReceiever(target);
 
         //TODO: serialize mess and send through objectoutputstream messageOut, return success/failure
+
         
         return true;
     }

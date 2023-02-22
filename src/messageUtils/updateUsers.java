@@ -3,7 +3,7 @@ package messageUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class updateUsers implements Serializable{
+public class updateUsers implements Serializable {
     private ArrayList<String> userList = new ArrayList<String>();
     private String activeUsers;
 
@@ -25,5 +25,13 @@ public class updateUsers implements Serializable{
 
     public ArrayList<String> getUsersArrayList() {
         return userList;
+    }
+
+    public void setUsersString(String list) {
+        this.activeUsers = list;
+    }
+
+    public void setUsersArrayList(ArrayList<String> list) {
+        this.userList = list;
     }
 }

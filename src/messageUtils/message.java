@@ -1,7 +1,10 @@
 package messageUtils;
 
 import java.io.Serializable;
-
+/**
+ * serializable class containing all the neccessary variables, constructers,
+ *      and accessor/mutator methods for a message
+ */
 public class message implements Serializable {
     private String messageSender;
     private boolean messageWhisper;
@@ -13,7 +16,7 @@ public class message implements Serializable {
         return messageSender + ": " + messageContent + "\n";
     }
 
-    public message(){
+    public message() {
         messageSender = "";
         messageWhisper = false;
         messageReceiver = "n/a";
