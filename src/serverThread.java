@@ -44,6 +44,7 @@ public class serverThread extends Thread {
 		}
 
 		//TODO: rewrite following loop with variables pulled from the message object
+		//and make use of the new message box in main class
 		while ((input = in.readLine()) != null) {
 			if (input.equals("Disconnect")) {
 				server.update_list(1, username);
@@ -69,7 +70,6 @@ public class serverThread extends Thread {
 				out.println("End of List");
 			}
 		
-			//TODO: determine how to route data between other threads
 			out.println(output);
 		}
 

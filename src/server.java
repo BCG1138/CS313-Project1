@@ -2,6 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import messageUtils.*;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * First half of the server implementation, this class contains the setup of the
@@ -12,6 +14,10 @@ import messageUtils.*;
 public class server
 {
 	private static ArrayList<String> user_list = new ArrayList<String>();
+	private static ArrayList<message> inbox = new ArrayList<message>();
+	private final ReadWriteLock readwrite_lock = new ReentrantReadWriteLock();
+	private final Lock write_request = readwrite_lock.writeLock();
+	private final Lock read_request = readwrite_lock.readLock();
 
 	/**
 	 * Setup of the port and listener.
@@ -102,5 +108,45 @@ public class server
 	{
 		// Very placeholder, determine how requests will be handled via sockets.
 		return	user_list;
+	}
+
+	/**
+	 * Public method allowing threads to add new messages to the global inbox
+	 *
+	 * @param mess_in Inbound message coming from client thread
+	 */
+	public static void update_inbox(message mess_in)
+	{
+		write_request.lock();
+		try {
+			inbox.add(mess_in);
+		} finally {
+			write_request.unlock();
+		}
+	}
+
+	/**
+	 * Public method allowing threads to read new messages from the global
+	 * inbox, a lock is implemented to prevent multiple threads reading at once.
+	 *
+	 * @return message returns a new message object to the thread
+	 */
+	public static message access_inbox()
+	{
+		read_request.lock();
+		try {
+			message intermediary = inbox.get(inbox.size() - 1);
+			message mess_out = new message();
+
+			//Placeholder, possibly replace with String copy functions
+			mess_out.messageSender = intermediary.messageSender;
+			mess_out.messageWhisper = intermediary.messageWhisper;
+			mess_out.messageReceiver = intermediary.messageReceiver;
+			mess_out.messageContent = intermediary.messageContent;
+		} finally {
+			read_request.unlock();
+		}
+
+		return mess_out;
 	}
 }
