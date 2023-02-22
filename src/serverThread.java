@@ -37,8 +37,10 @@ public class serverThread extends Thread {
 			//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		//TODO: figure out how fileinputstreams work with OIS
-		ObjectInputStream messageIn = new ObjectInputStream(socket.getInputStream());
-		ObjectOutputStream messageout = new ObjectOutputStream(socket.getOutputStream())
+		ObjectInputStream messageIn = new 
+		ObjectInputStream(socket.getInputStream());
+		ObjectOutputStream messageout = new
+		ObjectOutputStream(socket.getOutputStream());
 		} catch (Exception e) {
 			System.err.println("Failed to create data streams");
 		}
