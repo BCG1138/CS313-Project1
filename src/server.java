@@ -2,8 +2,9 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import messageUtils.*;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.*;
+//import java.util.concurrent.locks.ReadWriteLock;
+//import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * First half of the server implementation, this class contains the setup of the
@@ -15,9 +16,9 @@ public class server
 {
 	private static ArrayList<String> user_list = new ArrayList<String>();
 	private static ArrayList<message> inbox = new ArrayList<message>();
-	private final ReadWriteLock readwrite_lock = new ReentrantReadWriteLock();
-	private final Lock write_request = readwrite_lock.writeLock();
-	private final Lock read_request = readwrite_lock.readLock();
+	private static final ReadWriteLock readwrite_lock = new ReentrantReadWriteLock();
+	private static final Lock write_request = readwrite_lock.writeLock();
+	private static final Lock read_request = readwrite_lock.readLock();
 
 	/**
 	 * Setup of the port and listener.
@@ -134,15 +135,11 @@ public class server
 	public static message access_inbox()
 	{
 		read_request.lock();
-		try {
-			message intermediary = inbox.get(inbox.size() - 1);
-			message mess_out = new message();
+		message mess_out = new message();
 
-			//Placeholder, possibly replace with String copy functions
-			mess_out.messageSender = intermediary.messageSender;
-			mess_out.messageWhisper = intermediary.messageWhisper;
-			mess_out.messageReceiver = intermediary.messageReceiver;
-			mess_out.messageContent = intermediary.messageContent;
+		try {
+			mess_out = inbox.get(inbox.size() - 1);
+
 		} finally {
 			read_request.unlock();
 		}
