@@ -1,18 +1,23 @@
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-
 import messageUtils.*;
 
-public class server extends Thread
+/**
+ * First half of the server implementation, this class contains the setup of the
+ * port as well as the listener for incoming connections. It also contains
+ * various static methods allowing the threads to adapt and request the list of
+ * users as necessary.
+ */
+public class server
 {
 	private static ArrayList<String> user_list = new ArrayList<String>();
 
-    public void run() 
-	{
-
-    }
-
+	/**
+	 * Setup of the port and listener.
+	 *
+	 * @param args command line arguments, containing the port
+	 */
     public static void main(String[] args) 
 	{
 		boolean listen = true;
